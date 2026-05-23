@@ -7,8 +7,8 @@ import "core:sys/linux"
 import "core:thread"
 import "core:time"
 
-import "../gwin"
-import "../gwin/wl"
+import ".."
+import "../wl"
 
 WIDTH :: 1920
 HEIGHT :: 1080
