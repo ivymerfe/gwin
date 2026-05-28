@@ -5,13 +5,13 @@ import "wl"
 
 WaylandWindow :: struct {
 	ctx:              ^WaylandContext,
-	id:               u32,
 	app_id:           cstring,
 	title:            cstring,
 	width:            int,
 	height:           int,
 	buffer_width:     f32,
 	buffer_height:    f32,
+	data:             rawptr,
 	scale:            f32,
 	configured:       bool,
 	fullscreen:       bool,
@@ -25,13 +25,13 @@ WaylandWindow :: struct {
 
 create_window :: proc(
 	ctx: ^WaylandContext,
-	id: u32,
 	app_id: cstring,
 	title: cstring,
 	width: int,
 	height: int,
 	buffer_width: f32,
 	buffer_height: f32,
+	data: rawptr,
 ) -> (
 	window: ^WaylandWindow,
 	success: bool,
@@ -42,7 +42,6 @@ create_window :: proc(
 		return
 	}
 	window = new(WaylandWindow)
-	window.id = id
 	window.ctx = ctx
 	window.surface = surface
 	window.app_id = app_id
@@ -51,6 +50,7 @@ create_window :: proc(
 	window.height = height
 	window.buffer_width = buffer_width
 	window.buffer_height = buffer_height
+	window.data = data
 	window.scale = 1.0
 	window.visible = false
 
