@@ -50,13 +50,13 @@ main :: proc() {
 	}
 	window, success := gwin.create_window(
 		&g_context,
-		0,
 		"gwin",
 		"test",
 		WIDTH,
 		HEIGHT,
 		WIDTH,
 		HEIGHT,
+		nil,
 	)
 	if !success {
 		log.panic("Failed to create window")
